@@ -5,3 +5,4 @@ keras
 pandas
 numpy
 opencv-python
+huggingface_hub
