@@ -4,6 +4,5 @@ tensorflow
 keras
 pandas
 numpy
-opencv-python
+opencv-python==4.10.0.84
 huggingface_hub
-cv2
