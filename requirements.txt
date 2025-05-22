@@ -6,3 +6,4 @@ pandas
 numpy
 opencv-python
 huggingface_hub
+cv2
