@@ -42,7 +42,7 @@ class VideoFrameExtractor:
             frame_count += 1
 
         cap.release()
-        cv2.destroyAllWindows()
+#        cv2.destroyAllWindows()
 
     def get_timestamps(self):
         return self.timestamps
