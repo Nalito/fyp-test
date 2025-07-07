@@ -11,23 +11,87 @@ from emo_trim import select_emotion
 app = Flask(__name__)
 
 HTML_FORM = """
-<!doctype html>
-<title>Emotion-Based Video Merger</title>
-<h2>Upload 2 to 4 Videos and Select an Emotion</h2>
-<form method=post enctype=multipart/form-data>
-  Emotion:
-  <select name="emotion">
-    <option value="sad">Sad</option>
-    <option value="happy">Happy</option>
-    <option value="fear">Fear</option>
-    <option value="surprise">Surprise</option>
-    <option value="neutral">Neutral</option>
-    <option value="disgust">Disgust</option>
-    <option value="angry">Angry</option>
-  </select><br><br>
-  <input type=file name=videos multiple><br><br>
-  <input type=submit value='Process Videos'>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion-Based Video Merger</title>
+  <style>
+    body {
+      background-color: #0e1117;
+      color: #f0f2f6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #161a23;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      width: 90%;
+      max-width: 600px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+    select, input[type="file"], button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    select, input[type="file"] {
+      background-color: #2c313c;
+      color: #f0f2f6;
+    }
+    button {
+      background-color: #2f80ed;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 24px;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Emotion-Based Video Merger</h2>
+    <form method="post" enctype="multipart/form-data">
+      <label for="emotion">Select a preferred emotion:</label>
+      <select name="emotion" id="emotion">
+        <option value="sad">sad</option>
+        <option value="happy">happy</option>
+        <option value="fear">fear</option>
+        <option value="surprise">surprise</option>
+        <option value="neutral">neutral</option>
+        <option value="disgust">disgust</option>
+        <option value="angry">angry</option>
+      </select>
+
+      <label for="videos">Upload 2 to 4 video files:</label>
+      <input type="file" name="videos" id="videos" multiple accept="video/mp4,video/x-m4v,video/*">
+
+      <button type="submit">Process Videos</button>
+    </form>
+  </div>
+</body>
+</html>
 """
 
 @app.route('/', methods=['GET', 'POST'])
